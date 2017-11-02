@@ -1,10 +1,12 @@
 import React from 'react';
 
 const HomePage = () => {
-  return (<div>
-    <p>I'm the very BEST home component</p>
-    <button onClick={() => console.log('clicked!') }>Buttonie button</button>
-  </div>);
+  return (
+    <div className="center-align" style={{marginTop: '200px'}}>
+      <h3>Welcome</h3>
+      <p>Blah</p>
+    </div>
+  );
 };
 
 export default {
