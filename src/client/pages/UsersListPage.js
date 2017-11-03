@@ -12,13 +12,18 @@ class UsersListPage extends React.Component {
     return this.props.users.map(user => <li key={user.id}>{user.name}</li>)
   }
 
+  head(){
+    return (<Helmet>
+        <title>{`${this.props.users.length} Users Loaded`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    );
+  };
+
   render(){
     return (
       <div>
-        <Helmet>
-          <title>Users App</title>
-          <meta property="og:title" content="Users App" />
-        </Helmet>
+        {this.head()}
         List of users:
         <ul>{this.renderUsers()}</ul>
       </div>
