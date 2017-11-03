@@ -22,7 +22,13 @@ app.get('*', (req, res) => {
 
   const promises = matchRoutes(Routes, req.path).map( ({route}) => {
     return route.loadData ? route.loadData(store) : null;
-  });
+  }).map(promise => { //wraps a new promise to each promise (or null) item
+    if(promise) {
+      return new Promise((resolve, reject) => {
+        promise.then(resolve).catch(resolve);
+      });
+    }
+  })
 
   Promise.all(promises).then(() => {
     //render the app when all promises have finished
